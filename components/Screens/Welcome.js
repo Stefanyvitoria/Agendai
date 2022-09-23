@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     imageBackground: {
-        flex : 1,
         resizeMode: "cover",
         justifyContent: 'center',
         alignItems: "center",
@@ -79,18 +78,18 @@ const styles = StyleSheet.create({
     title : {
         color : colors.color1,
         fontSize : 35,
-        fontWeight : "bold",
-        
+        fontFamily: 'Fredoka-Bold',
     },
     subtitle : {
         fontSize : 20,
         color : colors.color1,
-        fontWeight: "bold",
         marginVertical : 25,
+        fontFamily: 'Fredoka-SemiBold',
     },
     text : {
         fontSize: 17,
         color : colors.color1,
+        fontFamily: 'Fredoka-Medium',
     },
     texts : {
         height: '45%',

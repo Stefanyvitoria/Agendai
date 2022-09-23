@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet,  View, Text, } from "react-native";
+import { StyleSheet,  View, Text, TouchableOpacity} from "react-native";
 
 import colors from "../Constantes";
 
@@ -16,16 +16,16 @@ export default function appButton(props) {
             alignItems : 'center',
         },
         text : {
-            fontWeight: "bold",
             fontSize: 20,
             color : colors.color5,
+            fontFamily : 'Fredoka-SemiBold',
         }
     });
 
     return (
-        <View style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => {alert('You tapped the button!')}}>
             <Text style={styles.text}>{props.text}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 
