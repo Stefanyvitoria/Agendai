@@ -13,7 +13,8 @@ from "react-native";
 import colors, {currentTheme} from "../Constantes";
 import PrimaryButton from "../Buttons/PrimaryButton";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({navigation}) {
+
     const window = useWindowDimensions();
 
     return (
@@ -42,7 +43,7 @@ export default function WelcomeScreen() {
                 </View>
 
                 <View style={styles.button}>
-                    <PrimaryButton text={'Comece agora mesmo!'} marginHorizontal={10}/>
+                    <PrimaryButton text={'Comece agora mesmo!'} marginHorizontal={10} onPress={() => navigation.navigate("Login")} />
                 </View>
 
             </View>

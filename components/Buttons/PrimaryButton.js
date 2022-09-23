@@ -23,7 +23,7 @@ export default function appButton(props) {
     });
 
     return (
-        <TouchableOpacity style={styles.button} onPress={() => {alert('You tapped the button!')}}>
+        <TouchableOpacity style={styles.button} onPress={() => props.onPress()}>
             <Text style={styles.text}>{props.text}</Text>
         </TouchableOpacity>
     );
