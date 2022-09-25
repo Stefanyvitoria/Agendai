@@ -7,6 +7,8 @@ import WelcomeScreen from './components/Screens/Welcome';
 import LoginUm from './components/Screens/LoginUm';
 import LoginDois from './components/Screens/LoginDois';
 import EsqueceuSenha from './components/Screens/EsqueceuSenha';
+import CadastroUm from './components/Screens/CadastroUM';
+import CadastroDois from './components/Screens/CadastroDois';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +20,8 @@ export default function App() {
                 <Stack.Screen name="LoginUm" component={LoginUm} options={{headerShown: false }}/>
                 <Stack.Screen name="LoginDois" component={LoginDois} options={{headerShown: false }}/>
                 <Stack.Screen name="EsqueceuSenha" component={EsqueceuSenha} options={{headerShown: false }}/>
+                <Stack.Screen name="CadastroUm" component={CadastroUm} options={{headerShown: false }}/>
+                <Stack.Screen name="CadastroDois" component={CadastroDois} options={{headerShown: false }}/>
             </Stack.Navigator>
 
         </NavigationContainer>
