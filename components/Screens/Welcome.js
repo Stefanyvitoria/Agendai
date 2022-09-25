@@ -6,28 +6,25 @@ import {
     useWindowDimensions, 
     ImageBackground, 
     Text, 
-    StatusBar
+    StatusBar,
+    Dimensions
     } 
 from "react-native";
-
 import colors, {currentTheme} from "../Constantes";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
-export default function WelcomeScreen({navigation}) {
 
-    const window = useWindowDimensions();
+const { width, height, fontScale } = Dimensions.get('window');
+
+export default function WelcomeScreen({navigation}) {    
 
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor={colors.color1} barStyle={currentTheme == 'dark'? 'light-content' : 'dark-content'} />
         
             <ImageBackground 
-                style={Object.assign({}, styles.imageBackground,
-                    {   
-                        width: window.width * 0.90,
-                        height: window.height * 0.5,
-                    })
-                } 
+                style={styles.imageBackground} 
                 source={require('../../assets/BG.png')}>
                     
                 <Image style={styles.logo} source={require('../../assets/AgendAi_Logo.png')} />
@@ -43,7 +40,7 @@ export default function WelcomeScreen({navigation}) {
                 </View>
 
                 <View style={styles.button}>
-                    <PrimaryButton text={'Comece agora mesmo!'} marginHorizontal={10} onPress={() => navigation.navigate("Login")} />
+                    <PrimaryButton text={'Comece agora mesmo!'} marginHorizontal={10} onPress={() => navigation.navigate("LoginUm")} />
                 </View>
 
             </View>
@@ -55,17 +52,17 @@ const styles = StyleSheet.create({
     container : {
         backgroundColor: colors.color1,
         flex: 1,
-        flexDirection: "column",
-        alignItems: 'center',
     },
     imageBackground: {
+        flex: 1,
         resizeMode: "cover",
         justifyContent: 'center',
         alignItems: "center",
+        marginHorizontal : 15,
     },
     logo: {
-        width : '70%',
-        height : '15%'
+        width : '80%',
+        height : '20%',
     },
     card : {
         flex : 1,
@@ -74,29 +71,28 @@ const styles = StyleSheet.create({
         paddingHorizontal: 50,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        width : '100%'
+        width : '100%',
     },
     title : {
         color : colors.color1,
-        fontSize : 35,
+        fontSize : RFPercentage(4.4),
         fontFamily: 'Fredoka-Bold',
     },
     subtitle : {
-        fontSize : 20,
+        fontSize : RFPercentage(3),
         color : colors.color1,
         marginVertical : 25,
         fontFamily: 'Fredoka-SemiBold',
     },
     text : {
-        fontSize: 17,
+        fontSize: RFPercentage(2),
         color : colors.color1,
         fontFamily: 'Fredoka-Medium',
     },
     texts : {
-        height: '45%',
+        flex: 3,
     },
     button: {
-        height: '40%',
-        justifyContent : 'center',
+        flex: 2,
     },
 });

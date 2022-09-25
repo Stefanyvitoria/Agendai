@@ -10,7 +10,7 @@ from "react-native";
 import colors, {currentTheme} from "../Constantes";
 import PrimaryButton from "../Buttons/PrimaryButton";
 
-export default function Login({navigation}) {
+export default function LoginUm({navigation}) {
 
     return (
         <View style={styles.container}>
