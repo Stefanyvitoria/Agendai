@@ -34,7 +34,7 @@ export default function LoginUm({navigation}) {
                     <Text style={styles.subText}>Manter Conectado</Text>
                 </View>
 
-                <PrimaryButton text={"Avançar"} onPress={() => alert("without route")}></PrimaryButton>
+                <PrimaryButton text={"Avançar"} onPress={() => navigation.navigate('LoginDois')}></PrimaryButton>
 
                 <Text style={Object.assign({},styles.subText, styles.senha)}>Esqueceu a asenha?</Text>
                 
@@ -75,8 +75,6 @@ const styles = StyleSheet.create({
         flex : 6,
         alignSelf : 'flex-start',
         width : '100%',
-
-        // backgroundColor : 'yellow',
     },
     text : {
         color : colors.color1,
