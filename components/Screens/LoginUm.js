@@ -3,13 +3,14 @@ import {
     View,
     Text,
     StyleSheet,
-    Button,
     TextInput,
     Image,
-    Dimensions
+    Dimensions,
+    TouchableOpacity
     } 
 from "react-native";
-import CheckBox from "@react-native-community/checkbox";import colors, {currentTheme} from "../Constantes";
+import CheckBox from "@react-native-community/checkbox";
+import colors, {currentTheme} from "../Constantes";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
@@ -36,7 +37,9 @@ export default function LoginUm({navigation}) {
 
                 <PrimaryButton text={"Avançar"} onPress={() => navigation.navigate('LoginDois')}></PrimaryButton>
 
-                <Text style={Object.assign({},styles.subText, styles.senha)}>Esqueceu a asenha?</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('EsqueceuSenha')}>
+                    <Text style={Object.assign({},styles.subText, styles.senha)}>Esqueceu a asenha?</Text>
+                </TouchableOpacity>
                 
                 <View style={styles.row}>
                     <View style={styles.linha}></View>
