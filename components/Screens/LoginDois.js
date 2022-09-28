@@ -27,7 +27,7 @@ export default function LoginDois({navigation}) {
                     <View style={styles.linha}></View>
                 </View>
 
-                <PrimaryButton text={"Avançar como Cliente"} onPress={() => alert("null")}></PrimaryButton>
+                <PrimaryButton text={"Avançar como Cliente"} onPress={() => navigation.navigate("HomeCliente")}></PrimaryButton>
 
             </View>
         </View>
