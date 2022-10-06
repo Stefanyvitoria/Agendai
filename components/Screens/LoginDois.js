@@ -19,7 +19,7 @@ export default function LoginDois({navigation}) {
 
             <View style={styles.componentes}>
 
-                <PrimaryButton text={"Avançar como Prestador"} onPress={() => navigation.navigate('HomePrestador')}></PrimaryButton>
+                <PrimaryButton text={"Avançar como Prestador"} onPress={() => navigation.navigate('PrestadorHome')}></PrimaryButton>
                 
                 <View style={styles.row}>
                     <View style={styles.linha}></View>
