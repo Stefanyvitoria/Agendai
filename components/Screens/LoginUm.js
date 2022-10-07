@@ -13,12 +13,42 @@ import CheckBox from "@react-native-community/checkbox";
 import colors, {currentTheme} from "../Constantes";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { TESTE_KEY } from '@env';
 
 const { width, height, fontScale } = Dimensions.get('window');
 
 export default function LoginUm({navigation}) {
 
+    function onPress(email, senha) {
+        if (email == '') {
+            setErrorEmail(true);
+        }
+
+        if (senha == '') {
+            setErrorSenha(true);
+        }
+        
+        alert(TESTE_KEY);
+    }
+
+    function onChangeEmail (value) {
+        setErrorEmail(false);
+        setEmail(value)
+    }
+
+    function onChangeSenha (value) {
+        setErrorSenha(false);
+        setSenha(value);
+    }
+
     const [isSelected, setSelection] = useState(true);
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+
+    const [errorEmail, setErrorEmail] = useState(false);
+    const [errorSenha, setErrorSenha] = useState(false);
+
+
 
     return (
         <View style={styles.container}>
@@ -27,17 +57,26 @@ export default function LoginUm({navigation}) {
 
             <View style={styles.componentes}>
                 <Text style={styles.text}>Email</Text>
-                <TextInput style={styles.input} placeholder={"YourEmail@Agendai.com"} keyboardType="email-address"></TextInput>
+                <TextInput style={errorEmail ? styles.inputError :styles.input} 
+                        placeholder={"YourEmail@Agendai.com"} 
+                        keyboardType="email-address" 
+                        onChangeText={(value) => onChangeEmail(value)}
+                        >
+                </TextInput>
 
                 <Text style={styles.text}>Password</Text>
-                <TextInput style={styles.input} placeholder={"********"} secureTextEntry={true}></TextInput>
+                <TextInput style={errorSenha ? styles.inputError :styles.input} 
+                    onChangeText={(value) => onChangeSenha(value)} 
+                    placeholder={"********"} 
+                    secureTextEntry={true}>
+                    </TextInput>
 
                 <View style={styles.row}>
                     <CheckBox style={styles.checkbox} onValueChange={setSelection} value={isSelected} ></CheckBox>
                     <Text style={styles.subText}>Manter Conectado</Text>
                 </View>
 
-                <PrimaryButton text={"Avançar"} onPress={() => navigation.navigate('LoginDois')}></PrimaryButton>
+                <PrimaryButton text={"Avançar"} onPress={() => onPress(email, senha)}></PrimaryButton>
 
                 <TouchableOpacity onPress={() => navigation.navigate('EsqueceuSenha')}>
                     <Text style={Object.assign({},styles.subText, styles.senha)}>Esqueceu a asenha?</Text>
@@ -102,6 +141,18 @@ const styles = StyleSheet.create({
         paddingVertical : 12,
         marginTop : 5,
         marginBottom: 15,
+        color: colors.color1,
+    },
+    inputError : {
+        backgroundColor : colors.color4,
+        borderRadius : 10,
+        paddingHorizontal : 18,
+        paddingVertical : 12,
+        marginTop : 5,
+        marginBottom: 15,
+        color: colors.color1,
+        borderColor : 'red',
+        borderWidth: 1,
     },
     row : {
         alignItems : "center",

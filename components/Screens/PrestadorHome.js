@@ -19,24 +19,6 @@ import BottomBar from "../bottomBar/BottomBar";
 const { width, height, fontScale } = Dimensions.get('window');
 
 
-function Perfi(setTabAtual) {
-    return (
-        <View style={styles.container}>
-
-            <View style={styles.containerPerfil}>
-                <Text style={styles.text}>Perfil</Text>
-
-            </View>
-
-            <View style={styles.containerServicos}>
-
-            </View>
-
-            <BottomBar setTabAtual={setTabAtual}></BottomBar>
-        </View>
-    );
-}
-
 function body (tabAtual) {
 
     const uri = 'https://img.freepik.com/free-photo/handsome-man-cutting-beard-barber-shop-salon_1303-20932.jpg?w=2000'; // Recuperar do banco de dados
