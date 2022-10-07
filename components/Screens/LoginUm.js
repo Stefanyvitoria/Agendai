@@ -50,8 +50,8 @@ export default function LoginUm({navigation}) {
                 </View>
 
                 <View style={styles.row2}>
-                    <Image style={styles.image} source={require("../../assets/google.png")}></Image>
-                    <Image style={styles.image} source={require("../../assets/facebook.png")}></Image>
+                    <Image style={styles.image} source={require("../../assets/images/google.png")}></Image>
+                    <Image style={styles.image} source={require("../../assets/images/facebook.png")}></Image>
                 </View>
                 <TouchableOpacity onPress={()=> navigation.navigate('CadastroUm')}>
                     <Text style={Object.assign({}, styles.text, {fontSize : RFValue(10, width), alignSelf : 'center'})}>Não possui uma conta? Cadastre-se</Text>

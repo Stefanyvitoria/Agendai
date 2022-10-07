@@ -26,9 +26,9 @@ export default function WelcomeScreen({navigation}) {
         
             <ImageBackground 
                 style={styles.imageBackground} 
-                source={require('../../assets/BG.png')}>
+                source={require('../../assets/images/BG.png')}>
                     
-                <Image style={styles.logo} source={require('../../assets/AgendAi_Logo.png')} />
+                <Image style={styles.logo} source={require('../../assets/images/AgendAi_Logo.png')} />
 
             </ImageBackground>
 

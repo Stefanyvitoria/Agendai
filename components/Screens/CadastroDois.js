@@ -42,8 +42,8 @@ export default function CadastroDois({navigation}) {
                 </View>
 
                 <View style={styles.row2}>
-                    <Image style={styles.image} source={require("../../assets/google.png")}></Image>
-                    <Image style={styles.image} source={require("../../assets/facebook.png")}></Image>
+                    <Image style={styles.image} source={require("../../assets/images/google.png")}></Image>
+                    <Image style={styles.image} source={require("../../assets/images/facebook.png")}></Image>
                 </View>
 
                 <TouchableOpacity onPress={()=> navigation.goBack()}>
