@@ -10,6 +10,7 @@ import EsqueceuSenha from './components/Screens/EsqueceuSenha';
 import CadastroUm from './components/Screens/CadastroUM';
 import CadastroDois from './components/Screens/CadastroDois';
 import HomeCliente from './components/Screens/HomeCliente';
+import HomePrestador from './components/Screens/HomePrestador';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
                 <Stack.Screen name="CadastroUm" component={CadastroUm} options={{headerShown: false }}/>
                 <Stack.Screen name="CadastroDois" component={CadastroDois} options={{headerShown: false }}/>
                 <Stack.Screen name="HomeCliente" component={HomeCliente} options={{headerShown: false }}/>
+                <Stack.Screen name="HomePrestador" component={HomePrestador} options={{headerShown: false }}/>
             </Stack.Navigator>
 
         </NavigationContainer>

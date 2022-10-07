@@ -12,6 +12,7 @@ import {
 from "react-native";
 import colors, {currentTheme} from "../Constantes";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import SimpleCard from "../Cards/SimpleCard";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 
@@ -31,20 +32,22 @@ export default function WelcomeScreen({navigation}) {
 
             </ImageBackground>
 
-            <View style={styles.card}>
-
+            <SimpleCard> 
                 <View style={styles.texts} >
-                    <Text style= {styles.title}>Bem vindo ao AgendAí!</Text>
-                    <Text style= {styles.subtitle}>Seu aplicativo de agendamentos.</Text>
-                    <Text style={styles.text}>Aqui você pode consultar os serviços estéticos próximos à você e realizar agendamentos.</Text>
-                </View>
+                        <Text style= {styles.title}>Bem vindo ao AgendAí!</Text>
+                        <Text style= {styles.subtitle}>Seu aplicativo de agendamentos.</Text>
+                        <Text style={styles.text}>Aqui você pode consultar os serviços estéticos próximos à você e realizar agendamentos.</Text>
+                    </View>
 
-                <View style={styles.button}>
-                    <PrimaryButton text={'Comece agora mesmo!'} marginHorizontal={10} onPress={() => navigation.navigate("LoginUm")} />
-                </View>
+                    <View style={styles.button}>
+                        <PrimaryButton text={'Comece agora mesmo!'} marginHorizontal={10} onPress={() => navigation.navigate("LoginUm")} />
+                    </View>
 
-            </View>
+            </SimpleCard>
+
+                
         </View>
+        
     );
 }
 
@@ -64,15 +67,7 @@ const styles = StyleSheet.create({
         width : '80%',
         height : '20%',
     },
-    card : {
-        flex : 1,
-        backgroundColor : 'white',
-        paddingTop : 50,
-        paddingHorizontal: 50,
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-        width : '100%',
-    },
+    
     title : {
         color : colors.color1,
         fontSize : RFPercentage(4.4),
