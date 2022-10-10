@@ -1,21 +1,36 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
-    FlatList, Image, StyleSheet, Text, TouchableOpacity, View
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import BottomBar from '../bottomBar/BottomBar';
 
 export default function ClienteHome({navigation}) {
   const [tabAtual, setTabAtual] = useState('Início');
-  const tabList = [{name:'Início'},{name:'Busca'},{name:'Agenda'},{name:'Perfil'}];
+  const tabList = [
+    {name: 'Início'},
+    {name: 'Busca'},
+    {name: 'Agenda'},
+    {name: 'Perfil'},
+  ];
+
   return (
     <View style={styles.main}>
       <View style={styles.topBar}>
         <TouchableOpacity>
-            <Image onPress={null} style={styles.configButton} source={require('../../assets/images/configuração.png')}/>
+          <Image
+            onPress={null}
+            style={styles.configButton}
+            source={require('../../assets/images/configuração.png')}
+          />
         </TouchableOpacity>
       </View>
       {body(tabAtual)}
-      <BottomBar setTabAtual={setTabAtual} tabList={tabList}/>
+      <BottomBar setTabAtual={setTabAtual} tabList={tabList} />
     </View>
   );
 }
@@ -26,65 +41,65 @@ function body(tabAtual) {
   if (tabAtual == 'Início') {
     return (
       <View style={styles.container}>
-        <View style={{flex: 2, paddingTop: 5}}>
+        <View style={styles.categoriesView}>
           <FlatList
             data={Categorias}
             horizontal
             key={item => item.nome}
             renderItem={({item}) => (
-              <View style={{marginHorizontal: 10}}>
+              <View style={styles.categoryContainer}>
                 <TouchableOpacity onPress={null}>
-                  <Image
-                    style={styles.image}
-                    source={{uri: uri}}
-                  />
-                  <Text style={{alignSelf: 'center', color: '#336699'}}>{item.nome}</Text>
+                  <Image style={styles.image} source={{uri: uri}} />
+                  <Text style={styles.categoryName}>{item.nome}</Text>
                 </TouchableOpacity>
               </View>
             )}
           />
         </View>
-          <Text style={styles.sectionTitle}>Promoções para você</Text>
-        <View style={{flex: 2, width: '100%'}}>
+        <Text style={styles.sectionTitle}>Promoções para você</Text>
+        <View style={styles.cupomsView}>
           <FlatList
             data={Categorias}
             horizontal
             key={item => item.nome}
             renderItem={({item}) => (
-              <View style={{marginHorizontal: 10, alignSelf: 'center'}}>
+              <View style={styles.cupomContainer}>
                 <TouchableOpacity onPress={null}>
-                  <Image
-                    style={styles.imageBanner}
-                    source={{uri: uri}}
-                  />
+                  <Image style={styles.imageBanner} source={{uri: uri}} />
                 </TouchableOpacity>
               </View>
             )}
           />
         </View>
         <Text style={styles.sectionTitle}>Estabelecimentos recomendados</Text>
-        <View
-          style={{
-            flex: 4,
-            width: '100%',
-            paddingVertical: 10,
-          }}>
+        <View style={styles.servicesView}>
           <FlatList
             data={Categorias}
             key={item => item.nome}
             renderItem={({item}) => (
-              <View style={{margin: 5}}>
-                <TouchableOpacity onPress={null} style={{paddingLeft: 10,display:'flex',flexDirection: 'row', justifyContent:'space-between',alignItems: 'center'}}>
-                  <Image
-                    style={styles.image}
-                    source={{uri: uri}}
-                  />
-                  <View style={{ alignItems: 'center', padding: 10}}>
-                    <Text style={{padding: 5, color: '#336699'}}>{item.nome}</Text>
-                    <Text style={{padding: 5, color: '#336699'}}>Rate: {item.rate}</Text>
-                    <Text style={{padding: 5, color: '#336699'}}>{item.desc}</Text>
+              <View style={styles.serviceList}>
+                <TouchableOpacity
+                  onPress={null}
+                  style={styles.touchableService}>
+                  <Image style={styles.image} source={{uri: uri}} />
+                  <View style={styles.serviceInfo}>
+                    <Text style={styles.serviceText}>{item.nome}</Text>
+                    <Text style={styles.serviceText}>Rate: {item.rate}</Text>
+                    <Text style={styles.serviceText}>{item.desc}</Text>
                   </View>
-                    <Image style={{marginRight: 10}} source={require('../../assets/images/coração_vazio.png')}/>
+                </TouchableOpacity>
+                <TouchableOpacity activeOpacity={0}>
+                  {item.fav == true ? (
+                    <Image
+                      style={styles.favImage}
+                      source={require('../../assets/images/coração.png')}
+                    />
+                  ) : (
+                    <Image
+                      style={styles.favImage}
+                      source={require('../../assets/images/coração_vazio.png')}
+                    />
+                  )}
                 </TouchableOpacity>
               </View>
             )}
@@ -115,7 +130,7 @@ function body(tabAtual) {
 const styles = StyleSheet.create({
   main: {
     height: '100%',
-    paddingTop: 50
+    paddingTop: 50,
   },
   container: {
     display: 'flex',
@@ -124,7 +139,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  topBar:{
+  topBar: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -135,37 +150,68 @@ const styles = StyleSheet.create({
     top: 0,
     zIndex: 1,
   },
-  image:{
+  image: {
     borderRadius: 15,
     overflow: 'hidden',
     width: 100,
-    height: 100
+    height: 100,
   },
-  imageBanner:{
+  imageBanner: {
     borderRadius: 15,
     overflow: 'hidden',
     width: 200,
-    height: 100
+    height: 100,
   },
-  sectionTitle:{
-    width: '100%', 
+  sectionTitle: {
+    width: '100%',
     paddingTop: 5,
     paddingLeft: 10,
-    fontFamily : 'Fredoka',
+    fontFamily: 'Fredoka',
     fontSize: 17,
     fontWeight: '800',
     lineHeight: 24,
-    color: '#336699'
+    color: '#336699',
   },
-  configButton:{
-    marginRight: 10
-  }
+  configButton: {
+    marginRight: 10,
+  },
+  serviceList: {
+    margin: 5,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+  },
+  servicesView: {
+    flex: 4,
+    width: '100%',
+    paddingVertical: 10,
+  },
+  touchableService: {
+    paddingLeft: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '85%',
+  },
+  serviceInfo: {
+    alignItems: 'center',
+    padding: 10,
+    paddingLeft: 70,
+  },
+  serviceText: {padding: 5, color: '#336699'},
+  categoriesView: {flex: 2, paddingTop: 5},
+  categoryName: {alignSelf: 'center', color: '#336699'},
+  categoryContainer: {marginHorizontal: 10},
+  cupomsView: {flex: 2, width: '100%'},
+  cupomContainer: {marginHorizontal: 10, alignSelf: 'center'},
+  favImage: {marginRight: 10},
 });
 
 const Categorias = [
-  {nome: 'Barba',rate: 5,desc: 'R$10,00'},
-  {nome: 'Feminino',rate: 5,desc: 'R$10,00'},
-  {nome: 'Masculino',rate: 5,desc: 'R$10,00'},
-  {nome: 'Unha',rate: 5,desc: 'R$10,00'},
-  {nome: 'Pele',rate: 5,desc: 'R$10,00'},
+  {nome: 'Barba', rate: 5, desc: 'R$10,00', fav: true},
+  {nome: 'Feminino', rate: 5, desc: 'R$10,00', fav: false},
+  {nome: 'Masculino', rate: 5, desc: 'R$10,00', fav: false},
+  {nome: 'Unha', rate: 5, desc: 'R$10,00', fav: false},
+  {nome: 'Pele', rate: 5, desc: 'R$10,00', fav: false},
 ];
