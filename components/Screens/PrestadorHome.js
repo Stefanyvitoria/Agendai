@@ -139,11 +139,12 @@ function body (tabAtual) {
 export default function PrestadorHome({navigation}) {
 
     const [tabAtual, setTabAtual]= useState('Perfil');
+    const tabList = [{name:'Perfil'},{name:'Agenda'},{name:'Historico'},{name:'Relatorio'}];
 
     return (
         <View style={styles.main}>
             {body(tabAtual)}
-            <BottomBar setTabAtual={setTabAtual}></BottomBar>
+            <BottomBar setTabAtual={setTabAtual} tabList={tabList}></BottomBar>
         </View>
     );
 }

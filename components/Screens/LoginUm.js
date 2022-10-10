@@ -29,6 +29,7 @@ export default function LoginUm({navigation}) {
         }
         
         alert(TESTE_KEY);
+        navigation.navigate('LoginDois')
     }
 
     function onChangeEmail (value) {
