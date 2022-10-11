@@ -13,7 +13,7 @@ import CheckBox from "@react-native-community/checkbox";
 import colors, {currentTheme} from "../Constantes";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { TESTE_KEY } from '@env';
+import { HOST } from '@env';
 
 const { width, height, fontScale } = Dimensions.get('window');
 
@@ -27,8 +27,21 @@ export default function LoginUm({navigation}) {
         if (senha == '') {
             setErrorSenha(true);
         }
+
+        console.log('ok')
         
-        alert(TESTE_KEY);
+        fetch(HOST+'login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    user: email,
+                    passw: senha,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then((response) => response.json())
+            .then((json) => setResult(json.result));
     }
 
     function onChangeEmail (value) {
@@ -48,7 +61,7 @@ export default function LoginUm({navigation}) {
     const [errorEmail, setErrorEmail] = useState(false);
     const [errorSenha, setErrorSenha] = useState(false);
 
-
+    const [result, setResult] = useState("***");
 
     return (
         <View style={styles.container}>
@@ -56,9 +69,10 @@ export default function LoginUm({navigation}) {
             <Text style={styles.title}>LOGIN</Text>
 
             <View style={styles.componentes}>
+                <Text style={styles.text}>{result}</Text>
                 <Text style={styles.text}>Email</Text>
                 <TextInput style={errorEmail ? styles.inputError :styles.input} 
-                        placeholder={"YourEmail@Agendai.com"} 
+                        placeholder={"YourEmail@Dominio.com"} 
                         keyboardType="email-address" 
                         onChangeText={(value) => onChangeEmail(value)}
                         >
