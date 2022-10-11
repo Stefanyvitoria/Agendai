@@ -28,20 +28,22 @@ export default function LoginUm({navigation}) {
             setErrorSenha(true);
         }
 
-        console.log('ok')
+        console.log(email,senha);
         
-        fetch(HOST+'login', {
-                method: 'POST',
-                body: JSON.stringify({
-                    user: email,
-                    passw: senha,
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-            .then((response) => response.json())
-            .then((json) => setResult(json.result));
+        // fetch(HOST+'login', {
+        //         method: 'POST',
+        //         body: JSON.stringify({
+        //             user: email,
+        //             passw: senha,
+        //         }),
+        //         headers: {
+        //             'Content-type': 'application/json; charset=UTF-8',
+        //         },
+        //     })
+        //     .then((response) => response.json())
+        //     .then((json) => setResult(json.result));
+
+        navigation.navigate('LoginDois')
     }
 
     function onChangeEmail (value) {
